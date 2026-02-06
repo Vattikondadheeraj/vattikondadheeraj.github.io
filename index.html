@@ -4,254 +4,393 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dheeraj Vattikonda</title>
+
+    <!-- SEO / Social sharing -->
+    <meta name="description" content="Dheeraj Vattikonda — Researcher working on reinforcement learning and reasoning with LLM agents at ServiceNow AI Research and Mila.">
+    <meta property="og:title" content="Dheeraj Vattikonda">
+    <meta property="og:description" content="Researcher working on RL and reasoning with LLM agents. ServiceNow AI Research · McGill · Mila.">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dheeraj Vattikonda">
+    <meta name="twitter:description" content="Researcher working on RL and reasoning with LLM agents. ServiceNow AI Research · McGill · Mila.">
+    <meta name="twitter:image" content="images/profile.jpg">
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Lato:wght@300;400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            line-height: 1.75;
-            color: #333;
-            background: #fff;
-            padding: 60px 20px;
-            max-width: 1024px;
-            margin: 0 auto;
-            font-size: 16px;
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            line-height: 1.7; color: #4F6371; background: #fff; font-size: 16px;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            font-kerning: normal;
-            font-feature-settings: 'liga' 1, 'calt' 1, 'tnum' 0, 'ss01' 0;
         }
-        h1 { font-size: 56px; font-weight: 800; margin-bottom: 28px; letter-spacing: -0.02em; line-height: 1.1; text-align: center; color: #0a0a0a; }
-        p { margin-bottom: 1em; }
-        a { color: #1a73e8; text-decoration: none; transition: opacity 0.2s; }
-        a:hover { opacity: 0.7; }
-        .section { margin-top: 50px; max-width: 860px; margin-left: auto; margin-right: auto; }
-        .section-pubs { max-width: 1200px; }
-        .section h2 { font-size: 28px; font-weight: 700; margin-bottom: 36px; color: #000; }
-        .paper { display:flex; gap:24px; align-items:center; margin-bottom:48px; }
-        .paper-image { flex-shrink:0; width:320px; height:200px; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(16,24,40,0.06); background:#f3f4f6; }
-        .paper-image img, .paper-image video { width:100%; height:100%; object-fit:cover; object-position:center; border:none; display:block; }
-        .paper-content { flex:1; min-width:0; font-size: 17px; }
-        .paper-title { font-weight: 500; margin-bottom: 8px; line-height: 1.4; font-size: 19px; }
-        .paper-title a { color:#0b57d0; font-weight:600; }
-        .paper-title a:hover { text-decoration: underline; }
-        .paper-authors { color:#475569; margin-bottom: 5px; font-size: 15px; }
-        .paper-links { font-size: 15px; }
-        .paper-links a { color:#2563eb; margin-right: 12px; }
-        .mentee-list { list-style: none; padding: 0; }
-        .mentee-list li { margin-bottom: 10px; padding-left: 18px; position: relative; line-height: 1.6; }
-        .mentee-list li:before { content: "-"; position: absolute; left: 0; color: #666; }
-        .profile-pic { display:block; width:140px; height:140px; border-radius: 12px; object-fit: cover; margin-bottom: 20px; border:1px solid #e0e0e0; }
-        .intro { display:flex; align-items:flex-start; gap:48px; margin: 10px 0 40px; }
-        .intro-text { flex:1; font-size:18px; line-height:1.9; }
-        .lead { font-size:19px; color:#1f2937; }
-        .lead strong { font-weight: 700; }
-        .intro a { text-underline-offset: 2px; text-decoration-thickness: 1px; }
-        .intro a:hover { text-decoration: underline; }
-        .intro-photo { width:340px; max-width:38vw; height:auto; border-radius:14px; border:1px solid #e6e6e6; box-shadow: 0 6px 18px rgba(16,24,40,0.08); }
-        .site-title { font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; text-wrap: balance; background: linear-gradient(90deg, #0f172a, #1f2937 45%, #334155 80%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 1px 0 rgba(255,255,255,0.15); }
-        .dropcap::first-letter { font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 800; font-size: 3.2rem; line-height: .9; float:left; padding-right: .15rem; letter-spacing: -0.02em; color:#0f172a; }
-        .section-pubs { padding-left: 0; }
-        .social-links { display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap: wrap; }
-        .social-links .links a { color:#2563eb; text-decoration:none; }
-        .social-links .links a + a::before { content:" / "; color:#94a3b8; margin: 0 8px; }
 
-        /* ---- venue tags ---- */
-        .tags{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
-        .tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;
-             font-size:13px;font-weight:600;letter-spacing:.01em;border:1px solid transparent;
-             background:#f1f5f9;color:#0f172a;white-space:nowrap}
-        .tag--conf{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
-        .tag--workshop{background:#ecfeff;color:#0e7490;border-color:#67e8f9}
-        .tag--oral{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
-        .tag--spotlight{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
-        .tag--year{background:#f8fafc;color:#334155;border-color:#e2e8f0}
-
-        .x-btn { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:#0f1419; color:#fff !important; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
-        .x-btn:hover { opacity:.9; }
-        
-        @media (max-width: 900px) { 
-            .section-pubs { padding-left: 0; } 
+        /* ===== NAV BAR ===== */
+        nav {
+            background: #000; padding: 0 40px; display: flex;
+            align-items: center; justify-content: space-between; height: 52px;
+            position: sticky; top: 0; z-index: 100;
         }
-        
-        @media (max-width: 800px) {
-            body { padding: 36px 18px; font-size: 15px; }
-            h1 { font-size: 40px; }
-            .intro { flex-direction: column; gap: 20px; }
-            .intro-photo { width: 200px; max-width: 100%; height: auto; }
-            .paper { flex-direction: column; gap:14px; }
-            .paper-image { width: 100%; height: 200px; }
+        nav .nav-name {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-weight: 700; font-size: 20px; color: #fff;
+            text-decoration: none;
+        }
+        nav .nav-links a {
+            color: #cbd5e1; text-decoration: none; font-size: 15px;
+            font-weight: 500; margin-left: 28px; transition: color 0.2s;
+        }
+        nav .nav-links a:hover { color: #fff; }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 860px; margin: 0 auto; padding: 50px 24px 0;
+        }
+
+        /* ===== HERO / PROFILE ===== */
+        .hero {
+            display: flex; align-items: flex-start; gap: 56px;
+            margin-bottom: 48px;
+        }
+        .hero-photo {
+            width: 220px; height: 220px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid #e2e8f0;
+        }
+        .hero-info { flex: 1; }
+        .hero-info h1 {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 40px; font-weight: 500; color: #000;
+            margin-bottom: 8px; line-height: 1.2;
+        }
+        .hero-info .subtitle {
+            font-size: 18px; color: #4F6371; line-height: 1.6; margin-bottom: 16px;
+        }
+        .hero-info .email {
+            font-size: 16px; color: #4F6371; font-style: italic; margin-bottom: 12px;
+        }
+        .hero-links { display: flex; align-items: center; gap: 6px; font-size: 16px; flex-wrap: wrap; }
+        .hero-links a { color: #004a6c; text-decoration: none; }
+        .hero-links a:hover { text-decoration: underline; }
+        .hero-links .sep { color: #999; margin: 0 4px; }
+
+        /* ===== SECTIONS ===== */
+        .section { margin-top: 44px; }
+        .section h2 {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 2rem; font-weight: 300; color: #000;
+            margin-bottom: 20px;
+        }
+        .section p { margin-bottom: 16px; font-size: 16px; color: #4F6371; line-height: 1.7; }
+        .section a { color: #004a6c; text-decoration: none; }
+        .section a:hover { text-decoration: underline; }
+
+        /* ===== NEWS ===== */
+        .news-wrapper {
+            position: relative;
+        }
+        .news-wrapper::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 40px; background: linear-gradient(transparent, #fff);
+            pointer-events: none;
+        }
+        .news-list {
+            list-style: none; padding: 0;
+            max-height: 160px; overflow-y: auto;
+            scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;
+        }
+        .news-list::-webkit-scrollbar { width: 5px; }
+        .news-list::-webkit-scrollbar-track { background: transparent; }
+        .news-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .news-list li {
+            display: flex; gap: 14px; padding: 6px 0; font-size: 15px;
+            line-height: 1.6; border-bottom: 1px solid #f1f5f9;
+        }
+        .news-list li:last-child { border-bottom: none; }
+        .news-date {
+            flex-shrink: 0; min-width: 90px; font-weight: 700;
+            color: #4F6371; font-size: 14px;
+        }
+        .news-list a { color: #004a6c; }
+
+        /* ===== PUBLICATIONS ===== */
+        .pub {
+            display: flex; gap: 20px; align-items: flex-start;
+            margin-bottom: 36px; padding-bottom: 36px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .pub:last-child { border-bottom: none; }
+        .pub-image {
+            flex-shrink: 0; width: 240px; height: 150px; border-radius: 6px;
+            overflow: hidden; background: #f3f4f6;
+        }
+        .pub-image img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .pub-content { flex: 1; min-width: 0; }
+        .pub-title {
+            font-size: 17px; font-weight: 600; line-height: 1.4;
+            margin-bottom: 6px;
+        }
+        .pub-title a { color: #000; text-decoration: none; }
+        .pub-title a:hover { color: #004a6c; }
+        .pub-authors { font-size: 14px; color: #4F6371; margin-bottom: 4px; line-height: 1.5; }
+        .pub-venue { font-size: 14px; color: #7a8d9a; font-style: italic; margin-bottom: 6px; }
+        .pub-desc { font-size: 15px; color: #4F6371; margin-bottom: 8px; line-height: 1.6; }
+        .pub-links { font-size: 14px; }
+        .pub-links a {
+            color: #004a6c; text-decoration: none; margin-right: 14px;
+            font-weight: 500;
+        }
+        .pub-links a:hover { text-decoration: underline; }
+
+        /* ===== EDUCATION ===== */
+        .edu-item {
+            display: flex; gap: 16px; align-items: baseline;
+            margin-bottom: 14px; font-size: 15px;
+        }
+        .edu-year {
+            flex-shrink: 0; min-width: 100px; font-weight: 600;
+            color: #1a1a1a; font-size: 14px;
+        }
+        .edu-detail { color: #333; }
+        .edu-sub { color: #888; font-size: 14px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            max-width: 860px; margin: 60px auto 0; padding: 24px;
+            border-top: 1px solid #e2e8f0; text-align: center;
+            font-size: 13px; color: #999;
+        }
+        footer a { color: #888; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .hero { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+            .hero-photo { width: 160px; height: 160px; }
+            .hero-links { justify-content: center; }
+            .pub { flex-direction: column; gap: 12px; }
+            .pub-image { width: 100%; height: 180px; }
+            nav { padding: 0 20px; }
+            .container { padding: 36px 18px 0; }
+            .news-list li { flex-direction: column; gap: 2px; }
+            .edu-item { flex-direction: column; gap: 2px; }
         }
     </style>
 </head>
 <body>
-    <h1 class="site-title">Dheeraj Vattikonda</h1>
 
-    <div class="intro">
-        <div class="intro-text">
-            <p class="lead">
+    <!-- ===== NAV ===== -->
+    <nav>
+        <a href="#" class="nav-name">Dheeraj Vattikonda</a>
+        <div class="nav-links">
+            <a href="#publications">Research</a>
+            <a href="#">Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <img src="images/profile.jpg" alt="Dheeraj Vattikonda" class="hero-photo" />
+            <div class="hero-info">
+                <h1>Dheeraj Vattikonda</h1>
+                <div class="subtitle">
+                    Visiting Researcher, ServiceNow AI Research<br>
+                    M.Sc. Student, McGill University &amp; Mila
+                </div>
+                <div class="email">dheeraj.46329 [at] gmail [dot] com</div>
+                <div class="hero-links">
+                    <a href="https://scholar.google.com/citations?user=XJtv0zoAAAAJ" target="_blank">Google Scholar</a>
+                    <span class="sep">/</span>
+                    <a href="https://x.com/dheeraj_46329" target="_blank">𝕏 @dheeraj_46329</a>
+                    <span class="sep">/</span>
+                    <a href="https://www.linkedin.com/in/dheeraj-vattikonda-429619184" target="_blank">LinkedIn</a>
+                    <span class="sep">/</span>
+                    <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ABOUT ===== -->
+        <div class="section">
+            <h2>About Me</h2>
+            <p>
                 I work on reinforcement learning and reasoning with LLM agents in the Long Horizon Agents team under
-                <a href="https://optimass.github.io/" target="_blank" rel="noopener noreferrer">Massimo Caccia</a>
-                at <a href="https://www.servicenow.com/research/" target="_blank" rel="noopener noreferrer">ServiceNow AI Research</a>, based out of Montreal. I am also a Master's student at
-                <a href="https://www.mcgill.ca/" target="_blank" rel="noopener noreferrer">McGill University</a> and <a href="https://mila.quebec/en/" target="_blank" rel="noopener noreferrer">Mila</a>
-                under the guidance of <a href="https://www.cs.mcgill.ca/~xueliu/" target="_blank" rel="noopener noreferrer">Xue (Steve) Liu</a>.
+                <a href="https://optimass.github.io/" target="_blank">Massimo Caccia</a>
+                at <a href="https://www.servicenow.com/research/" target="_blank">ServiceNow AI Research</a>, based out of Montreal.
+                I am also a Master's student at <a href="https://www.mcgill.ca/" target="_blank">McGill University</a>
+                and <a href="https://mila.quebec/en/" target="_blank">Mila</a> under the guidance of
+                <a href="https://www.cs.mcgill.ca/~xueliu/" target="_blank">Xue (Steve) Liu</a>.
             </p>
             <p>
-                My current research revolves around reasoning in LLM web agents and tool-calling systems, and my recent work on web agent training received an
-                <a href="https://slideslive.com/39044475/how-to-train-your-llm-web-agent-a-statistical-diagnosis" target="_blank" rel="noopener noreferrer">oral presentation</a> at ICML and will appear at NeurIPS 2025.
+                My current research revolves around reasoning in LLM web agents and tool-calling systems. My recent work on web agent training received an
+                <a href="https://slideslive.com/39044475/how-to-train-your-llm-web-agent-a-statistical-diagnosis" target="_blank">oral presentation</a>
+                at ICML and will appear at NeurIPS 2025.
             </p>
             <p>
-                I completed my Bachelor's in Electronics and Communication Engineering at 
-                <a href="https://nith.ac.in/" target="_blank" rel="noopener noreferrer">National Institute of Technology, Hamirpur</a>, 
+                I completed my Bachelor's in Electronics and Communication Engineering at
+                <a href="https://nith.ac.in/" target="_blank">NIT Hamirpur</a>,
                 where I worked on robot perception, focusing on differentiable SLAM systems and LiDAR-based perception tasks for autonomous navigation.
             </p>
-            <div class="social-links">
-                <a class="x-btn" href="https://x.com/dheeraj_46329" target="_blank" rel="noopener noreferrer">Follow</a>
-                <div class="links">
-                    <a href="https://www.linkedin.com/in/dheeraj-vattikonda-429619184" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="mailto:dheeraj.46329@gmail.com">Email</a>
-                    <a href="https://scholar.google.com/citations?user=XJtv0zoAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+
+        <!-- ===== NEWS ===== -->
+        <div class="section">
+            <h2>News</h2>
+            <div class="news-wrapper">
+            <ul class="news-list">
+                <li>
+                    <span class="news-date">Feb 2026</span>
+                    <span>New paper: <a href="https://arxiv.org/abs/2602.04942">π-Distill — Privileged Information Distillation for Language Models</a></span>
+                </li>
+                <li>
+                    <span class="news-date">2025</span>
+                    <span><a href="https://slideslive.com/39044475/how-to-train-your-llm-web-agent-a-statistical-diagnosis">Oral presentation</a> at ICML 2025 CUA Workshop</span>
+                </li>
+                <li>
+                    <span class="news-date">2025</span>
+                    <span>"How to Train Your LLM Web Agent" accepted at NeurIPS 2025</span>
+                </li>
+                <li>
+                    <span class="news-date">2024</span>
+                    <span>Aurora accepted as <strong>Spotlight</strong> at NeurIPS 2024</span>
+                </li>
+                <li>
+                    <span class="news-date">Aug 2024</span>
+                    <span>Started as Visiting Researcher at <a href="https://www.servicenow.com/research/" target="_blank">ServiceNow AI Research</a></span>
+                </li>
+                <li>
+                    <span class="news-date">Aug 2023</span>
+                    <span>Started M.Sc. at <a href="https://mila.quebec/en/" target="_blank">Mila</a> / <a href="https://www.mcgill.ca/" target="_blank">McGill University</a></span>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="section" id="publications">
+            <h2>Selected Publications</h2>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/pi_distill.png" alt="Privileged Information Distillation" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2602.04942" target="_blank">Privileged Information Distillation for Language Models</a>
+                    </div>
+                    <div class="pub-authors">Emiliano Peñaloza, <strong>Dheeraj Vattikonda</strong>, Nicolas Gontier, Alexandre Lacoste, Laurent Charlin, Massimo Caccia</div>
+                    <div class="pub-venue">arXiv 2026</div>
+                    <div class="pub-desc">Distill frontier models even when they hide their reasoning, using training-time privileged information.</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2602.04942" target="_blank">paper</a>
+                        <a href="https://github.com/Emilianopp/Privileged-Information-Distillation" target="_blank">code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/web_agents.png" alt="Web Agent Training" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2507.04103" target="_blank">How to Train Your LLM Web Agent: A Statistical Diagnosis</a>
+                    </div>
+                    <div class="pub-authors"><strong>Dheeraj Vattikonda</strong>, Emiliano Peñaloza, Nicolas Gontier, Alexandre Lacoste, Laurent Charlin, Massimo Caccia</div>
+                    <div class="pub-venue">ICML 2025 CUA Workshop (Oral) · NeurIPS 2025</div>
+                    <div class="pub-desc">A comprehensive statistical analysis of training recipes for LLM web agents.</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2507.04103" target="_blank">paper</a>
+                        <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw" target="_blank">slides</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/aurora.png" alt="Aurora" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2407.03471" target="_blank">Learning Action and Reasoning-Centric Image Editing from Videos and Simulations</a>
+                    </div>
+                    <div class="pub-authors">Benno Krojer, <strong>Dheeraj Vattikonda</strong>, Luis Lara, Varun Jampani, Siva Reddy</div>
+                    <div class="pub-venue">NeurIPS 2024 (Spotlight)</div>
+                    <div class="pub-desc">Action and reasoning-centric image editing learned from video and simulation data.</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2407.03471" target="_blank">paper</a>
+                        <a href="https://aurora-editing.github.io/" target="_blank">website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/diff_slam.png" alt="Differentiable SLAM" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2309.09206" target="_blank">Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</a>
+                    </div>
+                    <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Chirag Shivakumar, Siddharth Choudhary, Prem Kalra</div>
+                    <div class="pub-venue">BMVC 2023</div>
+                    <div class="pub-desc">End-to-end differentiable SLAM improves downstream LiDAR perception.</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2309.09206" target="_blank">paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/slack.png" alt="SLACK" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2504.03089" target="_blank">SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</a>
+                    </div>
+                    <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Kshitij Madhav Bhat, Kunal Dargan, Prem Kalra</div>
+                    <div class="pub-venue">ICIPCW 2024</div>
+                    <div class="pub-desc">Adversarial attacks on LiDAR SLAM through targeted point cloud injections.</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2504.03089" target="_blank">paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-image">
+                    <img src="images/grad_lidar.png" alt="Grad-LiDAR-SLAM" loading="lazy">
+                </div>
+                <div class="pub-content">
+                    <div class="pub-title">
+                        <a href="https://openreview.net/forum?id=tvPtqbjsKgX" target="_blank">Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR with Pose-Graph Optimization</a>
+                    </div>
+                    <div class="pub-authors"><strong>Dheeraj Vattikonda</strong>, Aryan, Prashant Kumar, Prem Kalra</div>
+                    <div class="pub-venue">IROS 2022</div>
+                    <div class="pub-desc">A fully differentiable LiDAR SLAM pipeline with pose-graph optimization.</div>
+                    <div class="pub-links">
+                        <a href="https://openreview.net/pdf?id=tvPtqbjsKgX" target="_blank">paper</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <img src="images/profile.jpg" alt="Dheeraj Vattikonda" class="intro-photo" />
+
+
+
     </div>
 
-    <div class="section section-pubs">
-        <h2>Selected Publications</h2>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <a href="mailto:dheeraj.46329@gmail.com">dheeraj.46329@gmail.com</a> · Last updated February 2026
+    </footer>
 
-        <!-- Paper 0 - NEW PAPER -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/pi_distill.png" alt="Privileged Information Distillation" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://arxiv.org/pdf/2602.04942" target="_blank" rel="noopener noreferrer">Privileged Information Distillation for Language Models</a>
-                </div>
-                <div class="paper-authors">
-                    Emiliano Peñaloza, <strong>Dheeraj Vattikonda</strong>
-                </div>
-                <div class="tags">
-                  <span class="tag tag--year">arXiv 2026</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/pdf/2602.04942" target="_blank" rel="noopener noreferrer">paper</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Paper 1 -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/web_agents.png" alt="Web Agent Training" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://arxiv.org/abs/2507.04103" target="_blank" rel="noopener noreferrer">How to Train Your LLM Web Agent: A Statistical Diagnosis</a>
-                </div>
-                <div class="paper-authors">
-                    <strong>Dheeraj Vattikonda</strong>, Emiliano Peñaloza
-                </div>
-                <div class="tags">
-                  <span class="tag tag--oral">ICML 2025 CUA Workshop (Oral)</span>
-                  <span class="tag tag--conf">NeurIPS 2025</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2507.04103" target="_blank" rel="noopener noreferrer">paper</a>
-                    <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw" target="_blank" rel="noopener noreferrer">slides</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Paper 2 -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/aurora.png" alt="Image Editing" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://arxiv.org/abs/2407.03471" target="_blank" rel="noopener noreferrer">Learning Action and Reasoning-Centric Image Editing from Videos and Simulations</a>
-                </div>
-                <div class="paper-authors">Benno Krojer, <strong>Dheeraj Vattikonda</strong></div>
-                <div class="tags">
-                  <span class="tag tag--spotlight">NeurIPS 2024 (Spotlight)</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2407.03471" target="_blank" rel="noopener noreferrer">paper</a>
-                    <a href="https://aurora-editing.github.io/" target="_blank" rel="noopener noreferrer">website</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Paper 3 -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/diff_slam.png" alt="Differentiable SLAM" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://arxiv.org/abs/2309.09206" target="_blank" rel="noopener noreferrer">Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</a>
-                </div>
-                <div class="paper-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong></div>
-                <div class="tags">
-                  <span class="tag tag--conf">BMVC 2023</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2309.09206" target="_blank" rel="noopener noreferrer">paper</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Paper 4 -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/slack.png" alt="SLACK Attack" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://arxiv.org/abs/2504.03089" target="_blank" rel="noopener noreferrer">SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</a>
-                </div>
-                <div class="paper-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Kshitij Madhav Bhat, Kunal Dargan, Prem Kalra</div>
-                <div class="tags">
-                  <span class="tag tag--conf">ICIPCW 2024</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2504.03089" target="_blank" rel="noopener noreferrer">paper</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Paper 5 -->
-        <div class="paper">
-            <div class="paper-image">
-                <img src="images/grad_lidar.png" alt="Grad-LiDAR-SLAM" loading="lazy">
-            </div>
-            <div class="paper-content">
-                <div class="paper-title">
-                    <a href="https://openreview.net/forum?id=tvPtqbjsKgX" target="_blank" rel="noopener noreferrer">Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR with Pose-Graph Optimization</a>
-                </div>
-                <div class="paper-authors"><strong>Dheeraj Vattikonda</strong>, Aryan</div>
-                <div class="tags">
-                  <span class="tag tag--conf">IROS 2022</span>
-                </div>
-                <div class="paper-links">
-                    <a href="https://openreview.net/pdf?id=tvPtqbjsKgX" target="_blank" rel="noopener noreferrer">paper</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">code</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Example: ICLR 2025 (Oral) tag snippet you can reuse anywhere -->
-        <!--
-        <div class="tags">
-          <span class="tag tag--conf">ICLR 2025</span>
-          <span class="tag tag--oral">Oral</span>
-        </div>
-        -->
-    </div>
 </body>
 </html>
