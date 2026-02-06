@@ -26,7 +26,7 @@
 
         body {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            line-height: 1.8; color: #4F6371; background: #fff; font-size: 18px;
+            line-height: 1.8; color: #222; background: #fff; font-size: 20px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -54,39 +54,39 @@
 
         /* ===== HERO / PROFILE ===== */
         .hero {
-            display: flex; align-items: flex-start; gap: 80px;
-            margin-bottom: 60px; padding: 20px 0;
+            display: flex; align-items: flex-start; gap: 100px;
+            margin-bottom: 70px; padding: 20px 0;
         }
         .hero-photo {
-            width: 250px; height: 250px; border-radius: 50%;
+            width: 280px; height: 280px; border-radius: 50%;
             object-fit: cover; flex-shrink: 0;
             border: 3px solid white;
         }
         .hero-info { flex: 1; }
         .hero-info h1 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 46px; font-weight: 500; color: #000;
-            margin-bottom: 12px; line-height: 1.2;
+            font-size: 52px; font-weight: 500; color: #000;
+            margin-bottom: 14px; line-height: 1.2;
         }
         .hero-info .subtitle {
-            font-size: 20px; color: #4F6371; line-height: 1.7; margin-bottom: 24px;
+            font-size: 22px; color: #333; line-height: 1.7; margin-bottom: 28px;
         }
         .hero-info .email {
-            font-size: 22px; color: #4F6371; font-style: italic; margin-bottom: 20px;
+            font-size: 24px; color: #333; font-style: italic; margin-bottom: 22px;
         }
-        .hero-links { display: flex; align-items: center; gap: 8px; font-size: 18px; flex-wrap: wrap; }
+        .hero-links { display: flex; align-items: center; gap: 10px; font-size: 20px; flex-wrap: wrap; }
         .hero-links a { color: #004a6c; text-decoration: none; }
         .hero-links a:hover { text-decoration: underline; }
         .hero-links .sep { color: #999; margin: 0 4px; }
 
         /* ===== SECTIONS ===== */
-        .section { margin-top: 60px; }
+        .section { margin-top: 70px; }
         .section h2 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 2.4rem; font-weight: 300; color: #000;
-            margin-bottom: 28px;
+            font-size: 2.6rem; font-weight: 300; color: #000;
+            margin-bottom: 30px;
         }
-        .section p { margin-bottom: 20px; font-size: 18px; color: #4F6371; line-height: 1.8; }
+        .section p { margin-bottom: 22px; font-size: 20px; color: #222; line-height: 1.8; }
         .section a { color: #004a6c; text-decoration: none; }
         .section a:hover { text-decoration: underline; }
 
@@ -101,20 +101,20 @@
         }
         .news-list {
             list-style: none; padding: 0;
-            max-height: 200px; overflow-y: auto;
+            max-height: 240px; overflow-y: auto;
             scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;
         }
         .news-list::-webkit-scrollbar { width: 5px; }
         .news-list::-webkit-scrollbar-track { background: transparent; }
         .news-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .news-list li {
-            display: flex; gap: 18px; padding: 10px 0; font-size: 17px;
+            display: flex; gap: 20px; padding: 12px 0; font-size: 19px;
             line-height: 1.6; border-bottom: 1px solid #f1f5f9;
         }
         .news-list li:last-child { border-bottom: none; }
         .news-date {
-            flex-shrink: 0; min-width: 110px; font-weight: 700;
-            color: #4F6371; font-size: 16px;
+            flex-shrink: 0; min-width: 120px; font-weight: 700;
+            color: #222; font-size: 18px;
         }
         .news-list a { color: #004a6c; }
 
@@ -134,15 +134,15 @@
         }
         .pub-content { flex: 1; min-width: 0; }
         .pub-title {
-            font-size: 20px; font-weight: 600; line-height: 1.4;
-            margin-bottom: 8px;
+            font-size: 22px; font-weight: 600; line-height: 1.4;
+            margin-bottom: 10px;
         }
         .pub-title a { color: #000; text-decoration: none; }
         .pub-title a:hover { color: #004a6c; }
-        .pub-authors { font-size: 16px; color: #4F6371; margin-bottom: 6px; line-height: 1.5; }
-        .pub-venue { font-size: 16px; color: #7a8d9a; font-style: italic; margin-bottom: 8px; }
-        .pub-desc { font-size: 17px; color: #4F6371; margin-bottom: 10px; line-height: 1.7; }
-        .pub-links { font-size: 16px; }
+        .pub-authors { font-size: 18px; color: #333; margin-bottom: 8px; line-height: 1.5; }
+        .pub-venue { font-size: 18px; color: #555; font-style: italic; margin-bottom: 10px; }
+        .pub-desc { font-size: 19px; color: #333; margin-bottom: 12px; line-height: 1.7; }
+        .pub-links { font-size: 18px; }
         .pub-links a {
             color: #004a6c; text-decoration: none; margin-right: 14px;
             font-weight: 500;
