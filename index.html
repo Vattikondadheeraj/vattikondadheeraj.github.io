@@ -71,16 +71,18 @@
         .hero-info .subtitle {
             font-size: 22px; color: #333; line-height: 1.7; margin-bottom: 28px;
         }
-        .hero-info .email {
-            font-size: 24px; color: #333; font-style: italic; margin-bottom: 22px;
-        }
         .hero-links { display: flex; align-items: center; gap: 10px; font-size: 20px; flex-wrap: wrap; }
         .hero-links a { color: #004a6c; text-decoration: none; }
         .hero-links a:hover { text-decoration: underline; }
         .hero-links .sep { color: #999; margin: 0 4px; }
 
         /* ===== SECTIONS ===== */
-        .section { margin-top: 70px; }
+        .section { 
+            margin-top: 70px; 
+            padding-top: 70px;
+            border-top: 2px solid #9ca3af;
+        }
+        .section:first-of-type { border-top: none; padding-top: 0; }
         .section h2 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
             font-size: 2.8rem; font-weight: 400; color: #000;
@@ -172,15 +174,50 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
-            .hero { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
-            .hero-photo { width: 160px; height: 160px; }
-            .hero-links { justify-content: center; }
-            .pub { flex-direction: column; gap: 12px; }
-            .pub-image { width: 100%; height: 180px; }
-            nav { padding: 0 20px; }
-            .container { padding: 36px 18px 0; }
-            .news-list li { flex-direction: column; gap: 2px; }
+            body { font-size: 16px; }
+            
+            nav { padding: 0 16px; height: 50px; }
+            nav .nav-name { font-size: 1.1em; }
+            nav .nav-links a { font-size: 0.95em; margin-left: 16px; }
+            
+            .container { padding: 24px 16px 0; }
+            
+            .hero { 
+                flex-direction: column; align-items: center; 
+                text-align: center; gap: 24px; margin-bottom: 40px; 
+            }
+            .hero-photo { width: 140px; height: 140px; }
+            .hero-info h1 { font-size: 32px; margin-bottom: 10px; }
+            .hero-info .subtitle { font-size: 17px; margin-bottom: 18px; }
+            .hero-links { justify-content: center; font-size: 15px; }
+            
+            .section { margin-top: 40px; padding-top: 40px; }
+            .section h2 { font-size: 1.8rem; margin-bottom: 20px; }
+            .section p { font-size: 16px; margin-bottom: 16px; }
+            
+            .news-wrapper::after { height: 30px; }
+            .news-list { max-height: 300px; }
+            .news-list li { 
+                flex-direction: column; gap: 4px; 
+                font-size: 15px; padding: 10px 0; 
+            }
+            .news-date { font-size: 15px; min-width: auto; }
+            
+            .pub { 
+                flex-direction: column; gap: 14px; 
+                margin-bottom: 32px; padding-bottom: 32px; 
+            }
+            .pub-image { width: 100%; height: 200px; }
+            .pub-title { font-size: 18px; }
+            .pub-authors { font-size: 15px; }
+            .pub-venue { font-size: 15px; }
+            .pub-desc { font-size: 15px; }
+            .pub-links { font-size: 15px; }
+            .pub-links a { margin-right: 12px; }
+            
             .edu-item { flex-direction: column; gap: 2px; }
+            
+            footer { padding: 40px 16px; font-size: 12px; }
         }
     </style>
 </head>
@@ -206,7 +243,6 @@
                     Visiting Researcher, ServiceNow AI Research<br>
                     M.Sc. Student, McGill University &amp; Mila
                 </div>
-                <div class="email">dheeraj.46329 [at] gmail [dot] com</div>
                 <div class="hero-links">
                     <a href="https://scholar.google.com/citations?user=XJtv0zoAAAAJ" target="_blank">Google Scholar</a>
                     <span class="sep">/</span>
@@ -389,7 +425,7 @@
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <a href="mailto:dheeraj.46329@gmail.com">dheeraj.46329@gmail.com</a> · Last updated February 2026
+        Last updated February 2026
     </footer>
 
 </body>
