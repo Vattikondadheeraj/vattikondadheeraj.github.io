@@ -472,6 +472,28 @@
             mouse.y = null;
         });
         
+        // Touch event handlers for mobile
+        hero.addEventListener('touchstart', function(e) {
+            const rect = hero.getBoundingClientRect();
+            const touch = e.touches[0];
+            mouse.x = touch.clientX - rect.left;
+            mouse.y = touch.clientY - rect.top;
+            e.preventDefault();
+        }, { passive: false });
+        
+        hero.addEventListener('touchmove', function(e) {
+            const rect = hero.getBoundingClientRect();
+            const touch = e.touches[0];
+            mouse.x = touch.clientX - rect.left;
+            mouse.y = touch.clientY - rect.top;
+            e.preventDefault();
+        }, { passive: false });
+        
+        hero.addEventListener('touchend', function() {
+            mouse.x = null;
+            mouse.y = null;
+        });
+        
         // Particle class
         class Particle {
             constructor() {
