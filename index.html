@@ -56,13 +56,25 @@
         .hero {
             display: flex; align-items: flex-start; gap: 100px;
             margin-bottom: 70px; padding: 20px 0;
+            position: relative;
+        }
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
         .hero-photo {
             width: 280px; height: 280px; border-radius: 50%;
             object-fit: cover; flex-shrink: 0;
             border: 3px solid white;
+            position: relative;
+            z-index: 1;
         }
-        .hero-info { flex: 1; }
+        .hero-info { flex: 1; position: relative; z-index: 1; }
         .hero-info h1 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
             font-size: 52px; font-weight: 500; color: #000;
@@ -238,6 +250,7 @@
 
         <!-- ===== HERO ===== -->
         <div class="hero">
+            <canvas id="particleCanvas"></canvas>
             <img src="images/profile.jpg" alt="Dheeraj Vattikonda" class="hero-photo" />
             <div class="hero-info">
                 <h1>Dheeraj Vattikonda</h1>
@@ -427,6 +440,138 @@
     <footer>
         Last updated February 2026
     </footer>
+
+    <script>
+        // Particle animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        const hero = document.querySelector('.hero');
+        
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 120 };
+        
+        // Resize canvas
+        function resizeCanvas() {
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Mouse move tracking
+        hero.addEventListener('mousemove', function(e) {
+            const rect = hero.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        
+        hero.addEventListener('mouseleave', function() {
+            mouse.x = null;
+            mouse.y = null;
+        });
+        
+        // Particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.vx = (Math.random() - 0.5) * 2; // Increased from 0.5 to 2
+                this.vy = (Math.random() - 0.5) * 2; // Increased from 0.5 to 2
+                this.size = 3;
+            }
+            
+            update() {
+                // Continuously move particles
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.vx *= -1;
+                }
+                if (this.y < 0 || this.y > canvas.height) {
+                    this.vy *= -1;
+                }
+                
+                // Mouse interaction - particles move toward cursor
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let dirX = dx / distance;
+                        let dirY = dy / distance;
+                        
+                        this.x += dirX * force * 5;
+                        this.y += dirY * force * 5;
+                    }
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = 'rgba(156, 163, 175, 0.4)'; // Lighter gray with lower opacity
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Initialize particles
+        function init() {
+            particles = [];
+            let numberOfParticles = Math.floor((canvas.width * canvas.height) / 5000); // Increased density
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+        init();
+        
+        // Connect particles with lines
+        function connect() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        let opacity = 1 - (distance / 100);
+                        ctx.strokeStyle = `rgba(156, 163, 175, ${opacity * 0.3})`; // Lighter lines
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connect();
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Reinitialize on resize
+        window.addEventListener('resize', function() {
+            resizeCanvas();
+            init();
+        });
+    </script>
 
 </body>
 </html>
