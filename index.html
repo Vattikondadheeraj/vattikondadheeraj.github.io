@@ -25,28 +25,94 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg: #fff;
+            --bg-nav: #000;
+            --bg-card: #f3f4f6;
+            --text-primary: #222;
+            --text-secondary: #333;
+            --text-muted: #555;
+            --text-heading: #000;
+            --accent: #b509ac;
+            --accent-hover: #9a078f;
+            --accent-light: #c93dc2;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --nav-link: #fff;
+            --nav-name: #fff;
+            --sep: #999;
+            --scrollbar: #cbd5e1;
+            --photo-border: #b509ac;
+            --pub-title: #000;
+
+            --gradient-end: #fff;
+            --strong-color: inherit;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0d1117;
+            --bg-nav: #161b22;
+            --bg-card: #161b22;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #8b949e;
+            --text-heading: #f0f0f0;
+            --accent: #2698ba;
+            --accent-hover: #1e7a9a;
+            --accent-light: #3db8da;
+            --border: #21262d;
+            --border-light: #1c2128;
+            --nav-link: #c0c0c0;
+            --nav-name: #3db8da;
+            --sep: #555;
+            --scrollbar: #30363d;
+            --photo-border: #2698ba;
+            --pub-title: #f0f0f0;
+
+            --gradient-end: #0d1117;
+            --strong-color: #e0e0e0;
+        }
+
         body {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            line-height: 1.8; color: #222; background: #fff; font-size: 20px;
+            line-height: 1.8; color: var(--text-primary); background: var(--bg); font-size: 20px;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* ===== NAV BAR ===== */
         nav {
-            background: #000; padding: 0 90px; display: flex;
+            background: var(--bg-nav); padding: 0 90px; display: flex;
             align-items: center; justify-content: space-between; height: 45px;
             position: sticky; top: 0; z-index: 100;
+            transition: background 0.3s;
         }
         nav .nav-name {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-weight: 600; font-size: 1.4em; color: #fff;
+            font-weight: 600; font-size: 1.4em; color: var(--nav-name);
             text-decoration: none;
         }
+        nav .nav-links { display: flex; align-items: center; }
         nav .nav-links a {
-            color: #fff; text-decoration: none; font-size: 1.2em;
+            color: var(--nav-link); text-decoration: none; font-size: 1.2em;
             font-weight: 400; margin-left: 28px; transition: color 0.2s;
         }
-        nav .nav-links a:hover { color: #fff; }
+        nav .nav-links a:hover { color: var(--accent-light); }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            background: none; border: none; cursor: pointer;
+            margin-left: 28px; font-size: 1.3em; padding: 4px;
+            color: var(--nav-link); transition: color 0.2s;
+            display: flex; align-items: center;
+        }
+        .theme-toggle:hover { color: var(--accent-light); }
+        .theme-toggle .icon-sun,
+        .theme-toggle .icon-moon { display: none; }
+        :root .theme-toggle .icon-moon { display: inline; }
+        [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
 
         /* ===== MAIN CONTAINER ===== */
         .container {
@@ -59,113 +125,108 @@
             margin-bottom: 70px; padding: 20px 0;
             position: relative;
         }
-        #particleCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            will-change: auto;
-        }
         .hero-photo {
             width: 280px; height: 280px; border-radius: 50%;
             object-fit: cover; flex-shrink: 0;
-            border: 3px solid white;
-            position: relative;
-            z-index: 1;
+            border: 3px solid var(--border);
+            position: relative; z-index: 1;
+            transition: border-color 0.3s;
         }
         .hero-info { flex: 1; position: relative; z-index: 1; }
         .hero-info h1 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 52px; font-weight: 500; color: #000;
+            font-size: 52px; font-weight: 500; color: var(--text-heading);
             margin-bottom: 14px; line-height: 1.2;
         }
         .hero-info .subtitle {
-            font-size: 22px; color: #333; line-height: 1.7; margin-bottom: 28px;
+            font-size: 22px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px;
         }
         .hero-links { display: flex; align-items: center; gap: 10px; font-size: 20px; flex-wrap: wrap; }
-        .hero-links a { color: #004a6c; text-decoration: none; }
-        .hero-links a:hover { text-decoration: underline; }
-        .hero-links .x-link { color: #1DA1F2; }
-        .hero-links .x-link:hover { color: #1a8cd8; }
-        .hero-links .sep { color: #999; margin: 0 4px; }
+        .hero-links a { color: var(--text-secondary); text-decoration: none; }
+        .hero-links a:hover { text-decoration: underline; color: var(--text-primary); }
+        .hero-links .x-link { color: var(--text-secondary); }
+        .hero-links .x-link:hover { color: var(--text-primary); }
+        .hero-links .sep { color: var(--sep); margin: 0 4px; }
 
         /* ===== SECTIONS ===== */
-        .section { 
-            margin-top: 70px; 
-            padding-top: 70px;
-            border-top: 2px solid #9ca3af;
+        .section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: none;
         }
         .section:first-of-type { border-top: none; padding-top: 0; }
         .section h2 {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 2.8rem; font-weight: 400; color: #000;
+            font-size: 2.8rem; font-weight: 400; color: var(--accent);
             margin-bottom: 30px;
         }
-        .section p { margin-bottom: 22px; font-size: 20px; color: #222; line-height: 1.8; }
-        .section a { color: #004a6c; text-decoration: none; }
-        .section a:hover { text-decoration: underline; }
+        .section p { margin-bottom: 22px; font-size: 20px; color: var(--text-primary); line-height: 1.8; }
+        .section a { color: var(--accent); text-decoration: none; }
+        .section a:hover { text-decoration: underline; color: var(--accent-hover); }
 
         /* ===== NEWS ===== */
-        .news-wrapper {
-            position: relative;
-        }
+        .news-wrapper { position: relative; }
         .news-wrapper::after {
             content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-            height: 40px; background: linear-gradient(transparent, #fff);
+            height: 40px; background: linear-gradient(transparent, var(--gradient-end));
             pointer-events: none;
         }
         .news-list {
             list-style: none; padding: 0;
             max-height: 240px; overflow-y: auto;
-            scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;
+            scrollbar-width: thin; scrollbar-color: var(--scrollbar) transparent;
         }
         .news-list::-webkit-scrollbar { width: 5px; }
         .news-list::-webkit-scrollbar-track { background: transparent; }
-        .news-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .news-list::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
         .news-list li {
             display: flex; gap: 20px; padding: 12px 0; font-size: 19px;
-            line-height: 1.6; border-bottom: 1px solid #f1f5f9;
+            line-height: 1.6; border-bottom: 1px solid var(--border-light);
         }
         .news-list li:last-child { border-bottom: none; }
         .news-date {
             flex-shrink: 0; min-width: 120px; font-weight: 700;
-            color: #222; font-size: 18px;
+            color: var(--text-primary); font-size: 18px;
         }
-        .news-list a { color: #004a6c; }
+        .news-list a { color: var(--accent); }
+        .news-list a:hover { color: var(--accent-hover); }
+        .news-list strong { color: var(--strong-color); }
 
         /* ===== PUBLICATIONS ===== */
+        .pub-year-group { margin-bottom: 20px; }
+        .pub-year-label {
+            font-size: 3rem; font-weight: 300; color: var(--border);
+            float: right; margin-left: 30px; line-height: 1;
+        }
         .pub {
-            display: flex; gap: 28px; align-items: flex-start;
-            margin-bottom: 40px; padding-bottom: 40px;
-            border-bottom: 1px solid #f1f5f9;
+            display: flex; gap: 24px; align-items: flex-start;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
         }
-        .pub:last-child { border-bottom: none; }
-        .pub-image {
-            flex-shrink: 0; width: 240px; height: 150px; border-radius: 6px;
-            overflow: hidden; background: #f3f4f6;
-        }
-        .pub-image img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
+        .pub-badge {
+            flex-shrink: 0;
+            background: var(--accent); color: #fff;
+            font-size: 13px; font-weight: 700;
+            padding: 4px 12px; border-radius: 4px;
+            white-space: nowrap; margin-top: 4px;
         }
         .pub-content { flex: 1; min-width: 0; }
         .pub-title {
-            font-size: 22px; font-weight: 600; line-height: 1.4;
-            margin-bottom: 10px;
+            font-size: 20px; font-weight: 400; line-height: 1.4;
+            margin-bottom: 6px;
         }
-        .pub-title a { color: #000; text-decoration: none; }
-        .pub-title a:hover { color: #004a6c; }
-        .pub-authors { font-size: 18px; color: #333; margin-bottom: 8px; line-height: 1.5; }
-        .pub-venue { font-size: 18px; color: #555; font-style: italic; margin-bottom: 10px; }
-        .pub-desc { font-size: 19px; color: #333; margin-bottom: 12px; line-height: 1.7; }
-        .pub-links { font-size: 18px; }
+        .pub-title a { color: var(--accent); text-decoration: none; }
+        .pub-title a:hover { text-decoration: underline; color: var(--accent-hover); }
+        .pub-authors { font-size: 17px; color: var(--text-primary); margin-bottom: 6px; line-height: 1.5; }
+        .pub-venue { font-size: 17px; color: var(--text-primary); font-style: italic; margin-bottom: 10px; }
+        .pub-links { font-size: 15px; }
         .pub-links a {
-            color: #004a6c; text-decoration: none; margin-right: 14px;
-            font-weight: 500;
+            color: var(--text-primary); text-decoration: none; margin-right: 10px;
+            font-weight: 400; border: 1px solid var(--border);
+            padding: 2px 10px; border-radius: 3px;
+            transition: border-color 0.2s;
         }
-        .pub-links a:hover { text-decoration: underline; }
+        .pub-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
         /* ===== EDUCATION ===== */
         .edu-item {
@@ -174,65 +235,63 @@
         }
         .edu-year {
             flex-shrink: 0; min-width: 100px; font-weight: 600;
-            color: #1a1a1a; font-size: 14px;
+            color: var(--text-primary); font-size: 14px;
         }
-        .edu-detail { color: #333; }
-        .edu-sub { color: #888; font-size: 14px; }
+        .edu-detail { color: var(--text-secondary); }
+        .edu-sub { color: var(--text-muted); font-size: 14px; }
 
         /* ===== FOOTER ===== */
         footer {
             max-width: 1100px; margin: 60px auto 0; padding: 60px;
-            border-top: 1px solid #e2e8f0; text-align: center;
-            font-size: 13px; color: #999;
+            border-top: 1px solid var(--border); text-align: center;
+            font-size: 13px; color: var(--text-muted);
         }
-        footer a { color: #888; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { text-decoration: underline; color: var(--accent); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
             body { font-size: 16px; }
-            
+
             nav { padding: 0 16px; height: 50px; }
             nav .nav-name { font-size: 1.1em; }
             nav .nav-links a { font-size: 0.95em; margin-left: 16px; }
-            
+            .theme-toggle { margin-left: 16px; font-size: 1.1em; }
+
             .container { padding: 24px 16px 0; }
-            
-            .hero { 
-                flex-direction: column; align-items: center; 
-                text-align: center; gap: 24px; margin-bottom: 40px; 
+
+            .hero {
+                flex-direction: column; align-items: center;
+                text-align: center; gap: 24px; margin-bottom: 40px;
             }
             .hero-photo { width: 140px; height: 140px; }
             .hero-info h1 { font-size: 32px; margin-bottom: 10px; }
             .hero-info .subtitle { font-size: 17px; margin-bottom: 18px; }
             .hero-links { justify-content: center; font-size: 15px; }
-            
+
             .section { margin-top: 40px; padding-top: 40px; }
             .section h2 { font-size: 1.8rem; margin-bottom: 20px; }
             .section p { font-size: 16px; margin-bottom: 16px; }
-            
+
             .news-wrapper::after { height: 30px; }
             .news-list { max-height: 300px; }
-            .news-list li { 
-                flex-direction: column; gap: 4px; 
-                font-size: 15px; padding: 10px 0; 
+            .news-list li {
+                flex-direction: column; gap: 4px;
+                font-size: 15px; padding: 10px 0;
             }
             .news-date { font-size: 15px; min-width: auto; }
-            
-            .pub { 
-                flex-direction: column; gap: 14px; 
-                margin-bottom: 32px; padding-bottom: 32px; 
-            }
-            .pub-image { width: 100%; height: 200px; }
-            .pub-title { font-size: 18px; }
-            .pub-authors { font-size: 15px; }
-            .pub-venue { font-size: 15px; }
-            .pub-desc { font-size: 15px; }
-            .pub-links { font-size: 15px; }
-            .pub-links a { margin-right: 12px; }
-            
+
+            .pub-year-label { font-size: 2rem; float: none; margin: 0 0 10px; }
+            .pub { flex-direction: column; gap: 10px; padding: 20px 0; }
+            .pub-badge { align-self: flex-start; }
+            .pub-title { font-size: 17px; }
+            .pub-authors { font-size: 14px; }
+            .pub-venue { font-size: 14px; }
+            .pub-links { font-size: 13px; }
+            .pub-links a { margin-right: 8px; }
+
             .edu-item { flex-direction: column; gap: 2px; }
-            
+
             footer { padding: 40px 16px; font-size: 12px; }
         }
     </style>
@@ -245,6 +304,10 @@
         <div class="nav-links">
             <a href="#publications">Research</a>
             <a href="#">Home</a>
+            <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+                <span class="icon-moon">&#9790;</span>
+                <span class="icon-sun">&#9788;</span>
+            </button>
         </div>
     </nav>
 
@@ -252,10 +315,9 @@
 
         <!-- ===== HERO ===== -->
         <div class="hero">
-            <canvas id="particleCanvas"></canvas>
             <img src="images/profile.jpg" alt="Dheeraj Vattikonda" class="hero-photo" />
             <div class="hero-info">
-                <h1>Dheeraj Vattikonda</h1>
+                <h1><span style="color: var(--accent);">Dheeraj</span> Vattikonda</h1>
                 <div class="subtitle">
                     Visiting Researcher, ServiceNow AI Research<br>
                     M.Sc. Student, McGill University &amp; Mila
@@ -263,7 +325,7 @@
                 <div class="hero-links">
                     <a href="https://scholar.google.com/citations?user=XJtv0zoAAAAJ" target="_blank">Google Scholar</a>
                     <span class="sep">/</span>
-                    <a href="https://x.com/dheeraj_46329" target="_blank"><span class="x-link">𝕏</span> @dheeraj_46329</a>
+                    <a href="https://x.com/dheeraj_46329" target="_blank"><span class="x-link">&#120143;</span> @dheeraj_46329</a>
                     <span class="sep">/</span>
                     <a href="https://www.linkedin.com/in/dheeraj-vattikonda-429619184" target="_blank">LinkedIn</a>
                 </div>
@@ -280,16 +342,16 @@
                 I am also a Master's student at <a href="https://www.mcgill.ca/" target="_blank">McGill University</a>
                 and <a href="https://mila.quebec/en/" target="_blank">Mila</a> under the guidance of
                 <a href="https://www.cs.mcgill.ca/~xueliu/" target="_blank">Xue (Steve) Liu</a>.
-            </p>
-            <p>
                 My current research revolves around reasoning in LLM web agents and tool-calling systems. My recent work on web agent training received an
                 <a href="https://slideslive.com/39044475/how-to-train-your-llm-web-agent-a-statistical-diagnosis" target="_blank">oral presentation</a>
                 at ICML and will appear at NeurIPS 2025.
             </p>
             <p>
                 I completed my Bachelor's in Electronics and Communication Engineering at
-                <a href="https://nith.ac.in/" target="_blank">NIT Hamirpur</a>,
-                where I worked on robot perception, focusing on differentiable SLAM systems and LiDAR-based perception tasks for autonomous navigation.
+                <a href="https://nith.ac.in/" target="_blank">NIT Hamirpur</a>.
+                During my undergrad, I worked as a researcher at <a href="https://mila.quebec/en/" target="_blank">Mila</a> and
+                <a href="https://home.iitd.ac.in/" target="_blank">IIT Delhi</a>,
+                focusing on robot perception, differentiable SLAM systems, and LiDAR-based perception tasks for autonomous navigation.
             </p>
         </div>
 
@@ -300,7 +362,7 @@
             <ul class="news-list">
                 <li>
                     <span class="news-date">Feb 2026</span>
-                    <span>New paper: <a href="https://arxiv.org/abs/2602.04942">π-Distill — Privileged Information Distillation for Language Models</a></span>
+                    <span>New paper: <a href="https://arxiv.org/abs/2602.04942">&pi;-Distill &mdash; Privileged Information Distillation for Language Models</a></span>
                 </li>
                 <li>
                     <span class="news-date">2025</span>
@@ -328,113 +390,132 @@
         <div class="section" id="publications">
             <h2>Selected Publications</h2>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/pi_distill.png" alt="Privileged Information Distillation" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://arxiv.org/abs/2602.04942" target="_blank">Privileged Information Distillation for Language Models</a>
-                    </div>
-                    <div class="pub-authors">Emiliano Peñaloza, <strong>Dheeraj Vattikonda</strong>, Nicolas Gontier, Alexandre Lacoste, Laurent Charlin, Massimo Caccia</div>
-                    <div class="pub-venue">arXiv 2026</div>
-                    <div class="pub-desc">Distill frontier models even when they hide their reasoning, using training-time privileged information.</div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2602.04942" target="_blank">paper</a>
-                        <a href="https://github.com/Emilianopp/Privileged-Information-Distillation" target="_blank">code</a>
+            <!-- 2026 -->
+            <div class="pub-year-group">
+                <span class="pub-year-label">2026</span>
+
+                <div class="pub">
+                    <span class="pub-badge">ARXIV 2026</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2602.04942" target="_blank">Privileged Information Distillation for Language Models</a>
+                        </div>
+                        <div class="pub-authors">Emiliano Pe&ntilde;aloza, <strong>Dheeraj Vattikonda</strong>, Nicolas Gontier, Alexandre Lacoste, Laurent Charlin, Massimo Caccia</div>
+                        <div class="pub-venue">arXiv preprint, Feb 2026</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2602.04942" target="_blank">paper</a>
+                            <a href="https://github.com/Emilianopp/Privileged-Information-Distillation" target="_blank">code</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/web_agents.png" alt="Web Agent Training" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://arxiv.org/abs/2507.04103" target="_blank">How to Train Your LLM Web Agent: A Statistical Diagnosis</a>
+            <!-- 2025 -->
+            <div class="pub-year-group">
+                <span class="pub-year-label">2025</span>
+
+                <div class="pub">
+                    <span class="pub-badge">NeurIPS 2025</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2507.04103" target="_blank">How to Train Your LLM Web Agent: A Statistical Diagnosis</a>
+                        </div>
+                        <div class="pub-authors"><strong>Dheeraj Vattikonda</strong>, Santhoshi Ravichandran, Emiliano Penaloza, Hadi Nekoei, Megh Thakkar, Thibault Le Sellier de Chezelles, Nicolas Gontier, Miguel Mu&ntilde;oz-M&aacute;rmol, Sahar Omidi Shayegan, Stefania Raimondo, Xue Liu, Alexandre Drouin, Laurent Charlin, Alexandre Pich&eacute;, Alexandre Lacoste, Massimo Caccia</div>
+                        <div class="pub-venue">ICML 2025 CUA Workshop (Oral) &middot; NeurIPS 2025</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2507.04103" target="_blank">paper</a>
+                            <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw" target="_blank">slides</a>
+                        </div>
                     </div>
-                    <div class="pub-authors"><strong>Dheeraj Vattikonda</strong>, Santhoshi Ravichandran, Emiliano Penaloza, Hadi Nekoei, Megh Thakkar, Thibault Le Sellier de Chezelles, Nicolas Gontier, Miguel Muñoz-Mármol, Sahar Omidi Shayegan, Stefania Raimondo, Xue Liu, Alexandre Drouin, Laurent Charlin, Alexandre Piché, Alexandre Lacoste, Massimo Caccia</div>
-                    <div class="pub-venue">ICML 2025 CUA Workshop (Oral) · NeurIPS 2025</div>
-                    <div class="pub-desc">A comprehensive statistical analysis of training recipes for LLM web agents.</div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2507.04103" target="_blank">paper</a>
-                        <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw" target="_blank">slides</a>
+                </div>
+
+                <div class="pub">
+                    <span class="pub-badge">BLOG 2025</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://huggingface.co/blog/ServiceNow-AI/apriel-1p6-15b-thinker" target="_blank">Apriel-1.6-15b-Thinker: Cost-efficient Frontier Multimodal Performance</a>
+                        </div>
+                        <div class="pub-authors">Sathwik Tejaswi Madhusudhan, Sagar Davasam, Torsten Scholak, Shruthan Radhakrishna, Aman Tiwari, Jash Mehta, Toby Liang, Kelechi Ogueji, Akintunde Oladipo, Masoud Hashemi, Rishabh Maheshwary, Pulkit Pattnaik, Saloni Mittal, Khalil Slimi, Akshay Kalkunte, Shiva Krishna Reddy Malay, Aanjaneya Shukla, Oluwanifemi Bamgbose, Massimo Caccia, <strong>Dheeraj Vattikonda</strong>, Jishnu S Nair, Varun Pandey, Shashank Maiya, Dhruv Jhamb, Nicolas Gontier, Patrice Bechard, Tayfun Tuna, Kavya Sriram, Denis Akhiyarov, Hari Subramani, Tara Bogavelli, Srinivas Sunkara</div>
+                        <div class="pub-venue">ServiceNow AI Research, Dec 2025</div>
+                        <div class="pub-links">
+                            <a href="https://huggingface.co/blog/ServiceNow-AI/apriel-1p6-15b-thinker" target="_blank">blog</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/aurora.png" alt="Aurora" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://arxiv.org/abs/2407.03471" target="_blank">Learning Action and Reasoning-Centric Image Editing from Videos and Simulations</a>
+            <!-- 2024 -->
+            <div class="pub-year-group">
+                <span class="pub-year-label">2024</span>
+
+                <div class="pub">
+                    <span class="pub-badge">NeurIPS 2024</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2407.03471" target="_blank">Learning Action and Reasoning-Centric Image Editing from Videos and Simulations</a>
+                        </div>
+                        <div class="pub-authors">Benno Krojer, <strong>Dheeraj Vattikonda</strong>, Luis Lara, Varun Jampani, Eva Portelance, Christopher Pal, Siva Reddy</div>
+                        <div class="pub-venue">NeurIPS 2024 (Spotlight)</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2407.03471" target="_blank">paper</a>
+                            <a href="https://aurora-editing.github.io/" target="_blank">website</a>
+                        </div>
                     </div>
-                    <div class="pub-authors">Benno Krojer, <strong>Dheeraj Vattikonda</strong>, Luis Lara, Varun Jampani, Eva Portelance, Christopher Pal, Siva Reddy</div>
-                    <div class="pub-venue">NeurIPS 2024 (Spotlight)</div>
-                    <div class="pub-desc">Action and reasoning-centric image editing learned from video and simulation data.</div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2407.03471" target="_blank">paper</a>
-                        <a href="https://aurora-editing.github.io/" target="_blank">website</a>
+                </div>
+
+                <div class="pub">
+                    <span class="pub-badge">ICIPCW 2024</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2504.03089" target="_blank">SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</a>
+                        </div>
+                        <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Kshitij Madhav Bhat, Kunal Dargan, Prem Kalra</div>
+                        <div class="pub-venue">ICIPCW 2024</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2504.03089" target="_blank">paper</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/diff_slam.png" alt="Differentiable SLAM" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://arxiv.org/abs/2309.09206" target="_blank">Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</a>
-                    </div>
-                    <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Vedang Bhupesh Shenvi Nadkarni, Erqun Dong, Sabyasachi Sahoo</div>
-                    <div class="pub-venue">BMVC 2023</div>
-                    <div class="pub-desc">End-to-end differentiable SLAM improves downstream LiDAR perception.</div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2309.09206" target="_blank">paper</a>
+            <!-- 2023 -->
+            <div class="pub-year-group">
+                <span class="pub-year-label">2023</span>
+
+                <div class="pub">
+                    <span class="pub-badge">BMVC 2023</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2309.09206" target="_blank">Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</a>
+                        </div>
+                        <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Vedang Bhupesh Shenvi Nadkarni, Erqun Dong, Sabyasachi Sahoo</div>
+                        <div class="pub-venue">BMVC 2023</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2309.09206" target="_blank">paper</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/slack.png" alt="SLACK" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://arxiv.org/abs/2504.03089" target="_blank">SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</a>
-                    </div>
-                    <div class="pub-authors">Prashant Kumar, <strong>Dheeraj Vattikonda</strong>, Kshitij Madhav Bhat, Kunal Dargan, Prem Kalra</div>
-                    <div class="pub-venue">ICIPCW 2024</div>
-                    <div class="pub-desc">Adversarial attacks on LiDAR SLAM through targeted point cloud injections.</div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2504.03089" target="_blank">paper</a>
-                    </div>
-                </div>
-            </div>
+            <!-- 2022 -->
+            <div class="pub-year-group">
+                <span class="pub-year-label">2022</span>
 
-            <div class="pub">
-                <div class="pub-image">
-                    <img src="images/grad_lidar.png" alt="Grad-LiDAR-SLAM" loading="lazy">
-                </div>
-                <div class="pub-content">
-                    <div class="pub-title">
-                        <a href="https://openreview.net/forum?id=tvPtqbjsKgX" target="_blank">Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR with Pose-Graph Optimization</a>
-                    </div>
-                    <div class="pub-authors">Aryan FNU, <strong>Dheeraj Vattikonda</strong>, Erqun Dong, Sabyasachi Sahoo</div>
-                    <div class="pub-venue">IROS 2022</div>
-                    <div class="pub-desc">A fully differentiable LiDAR SLAM pipeline with pose-graph optimization.</div>
-                    <div class="pub-links">
-                        <a href="https://openreview.net/pdf?id=tvPtqbjsKgX" target="_blank">paper</a>
+                <div class="pub">
+                    <span class="pub-badge">IROS 2022</span>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            <a href="https://openreview.net/forum?id=tvPtqbjsKgX" target="_blank">Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR with Pose-Graph Optimization</a>
+                        </div>
+                        <div class="pub-authors">Aryan FNU, <strong>Dheeraj Vattikonda</strong>, Erqun Dong, Sabyasachi Sahoo</div>
+                        <div class="pub-venue">IROS 2022</div>
+                        <div class="pub-links">
+                            <a href="https://openreview.net/pdf?id=tvPtqbjsKgX" target="_blank">paper</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
     </div>
 
@@ -444,171 +525,21 @@
     </footer>
 
     <script>
-        // Particle animation
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        const hero = document.querySelector('.hero');
-        
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 120 };
-        
-        // Resize canvas
-        function resizeCanvas() {
-            canvas.width = hero.offsetWidth;
-            canvas.height = hero.offsetHeight;
+        // ===== THEME TOGGLE =====
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? '' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
         }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Mouse move tracking
-        hero.addEventListener('mousemove', function(e) {
-            const rect = hero.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
-        
-        hero.addEventListener('mouseleave', function() {
-            mouse.x = null;
-            mouse.y = null;
-        });
-        
-        // Touch event handlers for mobile
-        hero.addEventListener('touchstart', function(e) {
-            const rect = hero.getBoundingClientRect();
-            const touch = e.touches[0];
-            mouse.x = touch.clientX - rect.left;
-            mouse.y = touch.clientY - rect.top;
-            e.preventDefault();
-        }, { passive: false });
-        
-        hero.addEventListener('touchmove', function(e) {
-            const rect = hero.getBoundingClientRect();
-            const touch = e.touches[0];
-            mouse.x = touch.clientX - rect.left;
-            mouse.y = touch.clientY - rect.top;
-            e.preventDefault();
-        }, { passive: false });
-        
-        hero.addEventListener('touchend', function() {
-            mouse.x = null;
-            mouse.y = null;
-        });
-        
-        // Particle class
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.vx = (Math.random() - 0.5) * 2; // Increased from 0.5 to 2
-                this.vy = (Math.random() - 0.5) * 2; // Increased from 0.5 to 2
-                this.size = 3;
+
+        // Load saved theme
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
             }
-            
-            update() {
-                // Continuously move particles
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                // Bounce off edges
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.vx *= -1;
-                }
-                if (this.y < 0 || this.y > canvas.height) {
-                    this.vy *= -1;
-                }
-                
-                // Mouse interaction - particles move toward cursor
-                if (mouse.x != null && mouse.y != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < mouse.radius) {
-                        let force = (mouse.radius - distance) / mouse.radius;
-                        let dirX = dx / distance;
-                        let dirY = dy / distance;
-                        
-                        this.x += dirX * force * 5;
-                        this.y += dirY * force * 5;
-                    }
-                }
-            }
-            
-            draw() {
-                ctx.fillStyle = 'rgba(156, 163, 175, 0.4)'; // Lighter gray with lower opacity
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        // Initialize particles
-        function init() {
-            particles = [];
-            let numberOfParticles = Math.floor((canvas.width * canvas.height) / 5000); // Keep original density
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-        init();
-        
-        // Connect particles with lines - optimized
-        function connect() {
-            for (let i = 0; i < particles.length; i++) {
-                let connectionCount = 0;
-                for (let j = i + 1; j < particles.length; j++) {
-                    if (connectionCount >= 3) break; // Limit connections per particle
-                    
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 100) {
-                        let opacity = 1 - (distance / 100);
-                        ctx.strokeStyle = `rgba(156, 163, 175, ${opacity * 0.3})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        connectionCount++;
-                    }
-                }
-            }
-        }
-        
-        // Animation loop
-        let animationId;
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            
-            connect();
-            animationId = requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Pause animation when page is not visible
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                cancelAnimationFrame(animationId);
-            } else {
-                animate();
-            }
-        });
-        
-        // Reinitialize on resize
-        window.addEventListener('resize', function() {
-            resizeCanvas();
-            init();
-        });
+        })();
     </script>
 
 </body>
