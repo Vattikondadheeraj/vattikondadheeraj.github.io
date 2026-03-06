@@ -99,7 +99,7 @@
             text-decoration: none;
         }
         .nav-right { display: flex; align-items: center; }
-        nav .nav-links { display: flex; align-items: center; }
+        nav .nav-links { display: none; }
         nav .nav-links a {
             color: var(--nav-link); text-decoration: none; font-size: 1.2em;
             font-weight: 400; margin-left: 28px; transition: color 0.2s;
@@ -108,7 +108,7 @@
 
         /* Hamburger button */
         .hamburger {
-            display: none; background: none; border: none; cursor: pointer;
+            display: flex; background: none; border: none; cursor: pointer;
             flex-direction: column; gap: 4px; padding: 4px; margin-left: 20px;
         }
         .hamburger span {
@@ -290,8 +290,6 @@
 
             nav { padding: 0 16px; min-height: 50px; height: auto; }
             nav .nav-name { font-size: 1.1em; }
-            nav .nav-links { display: none; }
-            .hamburger { display: flex; }
             .theme-toggle { margin-left: 16px; font-size: 1.1em; }
 
             .container { padding: 24px 16px 0; }
@@ -353,6 +351,7 @@
         </div>
         <div class="mobile-menu">
             <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#news" onclick="toggleMenu()">News</a>
             <a href="#blogs" onclick="toggleMenu()">Blogs</a>
             <a href="#publications" onclick="toggleMenu()">Publications</a>
         </div>
@@ -403,7 +402,7 @@
         </div>
 
         <!-- ===== NEWS ===== -->
-        <div class="section">
+        <div class="section" id="news">
             <h2>News</h2>
             <div class="news-wrapper">
             <ul class="news-list">
