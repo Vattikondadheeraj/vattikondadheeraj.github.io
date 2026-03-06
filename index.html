@@ -84,14 +84,15 @@
             line-height: 1.8; color: var(--text-primary); background: var(--bg); font-size: 20px;
             -webkit-font-smoothing: antialiased;
             transition: background 0.3s, color 0.3s;
+            padding-top: 45px;
         }
 
         /* ===== NAV BAR ===== */
         nav {
             background: var(--bg-nav); padding: 0 90px; display: flex;
             align-items: center; justify-content: space-between; height: 45px;
-            position: sticky; top: 0; z-index: 100;
-            transition: background 0.3s; position: relative;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            transition: background 0.3s;
         }
         nav .nav-name {
             font-family: 'Lato', Verdana, Helvetica, sans-serif;
