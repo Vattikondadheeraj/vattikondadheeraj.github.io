@@ -75,8 +75,7 @@
     font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
     font-size: 14px;
     line-height: 1.55;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,7 +169,7 @@
     border-left: 2px solid var(--border);
     padding: 0 0 0 12px;
     margin-top: 4px;
-    max-height: 420px;
+    max-height: min(420px, calc(100dvh - 360px));
     overflow-y: auto;
   }
   .output::-webkit-scrollbar { width: 4px; }
@@ -292,29 +291,29 @@
   #cmd-input:focus { outline: none; }
 
   @media (max-width: 640px) {
-    body { padding: 10px; overflow: hidden; }
-    .terminal { border-radius: 8px; }
+    body { padding: 8px; min-height: 100dvh; align-items: flex-start; }
+    .terminal { border-radius: 8px; width: 100%; }
     .titlebar { padding: 8px 10px; }
     .titlebar .dot { width: 10px; height: 10px; }
     .titlebar-title { font-size: 10.5px; }
-    .body { padding: 18px 16px 22px; font-size: 12.5px; }
-    .corner-photo {
-      width: 100px; height: 100px;
-      top: 16px; right: 16px;
-      border-radius: 8px;
+    .body { padding: 12px 14px 16px; font-size: 12.5px; }
+    .corner-photo { width: 68px; height: 68px; top: 12px; right: 12px; border-radius: 6px; }
+    .boot { font-size: 11px; padding-right: 82px; line-height: 1.5; margin-bottom: 10px; }
+    .nav { gap: 5px; margin: 8px 0 10px; flex-wrap: wrap; }
+    .nav-btn { font-size: 11px; padding: 6px 9px; gap: 5px; border-radius: 5px; }
+    .nav-btn svg { width: 11px; height: 11px; }
+    .output {
+      padding-left: 10px;
+      max-height: min(340px, calc(100dvh - 310px));
     }
-    .boot { font-size: 11px; padding-right: 116px; line-height: 1.55; margin-bottom: 16px; }
-    .nav { gap: 6px; margin: 14px 0 16px; }
-    .nav-btn { font-size: 11.5px; padding: 7px 10px; gap: 6px; border-radius: 5px; }
-    .nav-btn svg { width: 12px; height: 12px; }
-    .output { padding-left: 10px; }
-    .output h2 { font-size: 12.5px; margin-bottom: 8px; }
-    .output p { font-size: 12.5px; line-height: 1.6; }
-    .output ul { padding-left: 14px; }
-    .output li { font-size: 12.5px; line-height: 1.55; }
-    .tree { font-size: 10.5px; line-height: 1.65; }
+    .output h2 { font-size: 12px; margin-bottom: 6px; }
+    .output p { font-size: 12px; line-height: 1.55; }
+    .output ul { padding-left: 12px; }
+    .output li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
+    .tree { font-size: 10px; line-height: 1.6; }
     .date { font-size: 11px; }
     .cursor { width: 7px; height: 12px; }
+    .prompt-line { margin-top: 8px; }
   }
 
   @media (max-width: 900px) and (min-width: 641px) {
