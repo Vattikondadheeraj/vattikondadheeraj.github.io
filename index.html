@@ -499,7 +499,7 @@
       if (i <= text.length) {
         cmdEl.textContent = text.slice(0, i);
         i++;
-        typingTimer = setTimeout(tick, 60);
+        typingTimer = setTimeout(tick, 25);
       } else {
         typingTimer = null;
         if (done) done();
@@ -535,7 +535,7 @@
       outputEl.innerHTML = html;
       indexTreeLines();
       thinkTimer = null;
-    }, 450 + Math.random() * 250);
+    }, 200 + Math.random() * 150);
   }
 
   function render(key) {
@@ -579,8 +579,8 @@
     let i = 0;
     const tick = () => {
       tail.textContent = text.slice(0, i);
-      if (i <= text.length) { i++; setTimeout(tick, 12); }
-      else { setTimeout(onDone, 40); }
+      if (i <= text.length) { i++; setTimeout(tick, 4); }
+      else { setTimeout(onDone, 15); }
     };
     tick();
   }
