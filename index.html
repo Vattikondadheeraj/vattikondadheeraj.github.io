@@ -190,6 +190,8 @@
   .date { color: var(--dim); }
   .dim  { color: var(--dim); }
   .tag  { color: var(--purple); }
+  .tag a { color: inherit; text-decoration: none; }
+  .tag a:hover { text-decoration: underline; }
   .me   { color: var(--green); font-weight: 600; }
   .output strong { color: var(--text); }
   .tree {
@@ -398,18 +400,18 @@
       content: `
         <h2>## news</h2>
         <ul>
-          <li><span class="date">[Apr 2026]</span> π-Distill accepted at <span class="tag">ICML 2026</span> and <span class="tag">ICLR 2026 SPOT Workshop</span></li>
+          <li><span class="date">[Apr 2026]</span> π-Distill accepted at <span class="tag"><a href="https://icml.cc/Conferences/2026" target="_blank">ICML 2026</a></span> and <span class="tag"><a href="https://iclr.cc/Conferences/2026" target="_blank">ICLR 2026 SPOT Workshop</a></span></li>
           <li><span class="date">[Feb 2026]</span> new paper: <strong>π-Distill — Privileged Information Distillation for Language Models</strong> &middot; <a href="https://arxiv.org/abs/2602.04942">arxiv</a></li>
           <li><span class="date">[Feb 2026]</span> blog: <em>Self-Distillation and Privileged Information Distillation</em></li>
           <li><span class="date">[Dec 2025]</span> released <strong>Apriel-1.6-15b-Thinker</strong> — a 15B reasoning model achieving frontier multimodal performance</li>
-          <li><span class="date">[Dec 2025]</span> <em>How to Train Your LLM Web Agent</em> accepted at <span class="tag">NeurIPS 2025</span></li>
-          <li><span class="date">[Jul 2025]</span> oral presentation at <span class="tag">ICML 2025 CUA Workshop</span></li>
+          <li><span class="date">[Dec 2025]</span> <em>How to Train Your LLM Web Agent</em> accepted at <span class="tag"><a href="https://neurips.cc/Conferences/2025" target="_blank">NeurIPS 2025</a></span></li>
+          <li><span class="date">[Jul 2025]</span> oral presentation at <span class="tag"><a href="https://icml.cc/Conferences/2025" target="_blank">ICML 2025 CUA Workshop</a></span></li>
           <li><span class="date">[Aug 2024]</span> started as Visiting Researcher at ServiceNow AI Research</li>
-          <li><span class="date">[Jul 2024]</span> Aurora accepted as <span class="tag">Spotlight</span> at <span class="tag">NeurIPS 2024</span></li>
-          <li><span class="date">[Sep 2023]</span> <em>Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</em> accepted at <span class="tag">BMVC 2023</span></li>
+          <li><span class="date">[Jul 2024]</span> Aurora accepted as <span class="tag">Spotlight</span> at <span class="tag"><a href="https://neurips.cc/Conferences/2024" target="_blank">NeurIPS 2024</a></span></li>
+          <li><span class="date">[Sep 2023]</span> <em>Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</em> accepted at <span class="tag"><a href="https://bmvc2023.org/" target="_blank">BMVC 2023</a></span></li>
           <li><span class="date">[Aug 2023]</span> started M.Sc. at Mila / McGill</li>
           <li><span class="date">[Nov 2022]</span> research internship at IIT Delhi</li>
-          <li><span class="date">[Sep 2022]</span> <em>Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR</em> accepted at <span class="tag">IROS 2022</span></li>
+          <li><span class="date">[Sep 2022]</span> <em>Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR</em> accepted at <span class="tag"><a href="https://iros2022.org/" target="_blank">IROS 2022</a></span></li>
           <li><span class="date">[Jan 2022]</span> research internship at Mila</li>
         </ul>
       `
@@ -423,26 +425,26 @@
 <div class="tree">
 <div class="tree-line">publications/</div>
 <div class="tree-line">├── <span class="dim">2026/</span></div>
-<div class="tree-line">│   └── <strong>Privileged Information Distillation for Language Models</strong> — <span class="tag">ICML 2026</span> · <span class="tag">ICLR 2026 SPOT Workshop</span> · <a href="https://arxiv.org/abs/2602.04942">paper</a> · <a href="https://emilianopp.github.io/Privileged-Information-Distillation-and-Self-Distillation/">blog</a></div>
+<div class="tree-line">│   └── <strong>Privileged Information Distillation for Language Models</strong> — <span class="tag"><a href="https://icml.cc/Conferences/2026" target="_blank">ICML 2026</a></span> · <span class="tag"><a href="https://iclr.cc/Conferences/2026" target="_blank">ICLR 2026 SPOT Workshop</a></span> · <a href="https://arxiv.org/abs/2602.04942">paper</a> · <a href="https://emilianopp.github.io/Privileged-Information-Distillation-and-Self-Distillation/">blog</a></div>
 <div class="tree-line">│       <span class="dim">Emiliano Peñaloza, <span class="me">Dheeraj Vattikonda</span>, Nicolas Gontier, Alexandre Lacoste, Laurent Charlin, Massimo Caccia</span></div>
 <div class="tree-line">│</div>
 <div class="tree-line">├── <span class="dim">2025/</span></div>
-<div class="tree-line">│   └── <strong>How to Train Your LLM Web Agent: A Statistical Diagnosis</strong> — <span class="tag">NeurIPS 2025</span> · <span class="tag">ICML CUA Workshop (Oral)</span> · <a href="https://arxiv.org/abs/2507.04103">paper</a> · <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw">slides</a></div>
+<div class="tree-line">│   └── <strong>How to Train Your LLM Web Agent: A Statistical Diagnosis</strong> — <span class="tag"><a href="https://neurips.cc/Conferences/2025" target="_blank">NeurIPS 2025</a></span> · <span class="tag"><a href="https://icml.cc/Conferences/2025" target="_blank">ICML CUA Workshop (Oral)</a></span> · <a href="https://arxiv.org/abs/2507.04103">paper</a> · <a href="https://www.youtube.com/watch?v=zTI4kFqy9dw">slides</a></div>
 <div class="tree-line">│       <span class="dim"><span class="me">Dheeraj Vattikonda</span> et al. (16 authors)</span></div>
 <div class="tree-line">│</div>
 <div class="tree-line">├── <span class="dim">2024/</span></div>
-<div class="tree-line">│   ├── <strong>Aurora: Action and Reasoning-Centric Image Editing</strong> — <span class="tag">NeurIPS 2024 (Spotlight)</span> · <a href="https://arxiv.org/abs/2407.03471">paper</a> · <a href="https://aurora-editing.github.io/">website</a></div>
+<div class="tree-line">│   ├── <strong>Aurora: Action and Reasoning-Centric Image Editing</strong> — <span class="tag"><a href="https://neurips.cc/Conferences/2024" target="_blank">NeurIPS 2024 (Spotlight)</a></span> · <a href="https://arxiv.org/abs/2407.03471">paper</a> · <a href="https://aurora-editing.github.io/">website</a></div>
 <div class="tree-line">│   │   <span class="dim">Benno Krojer, <span class="me">Dheeraj Vattikonda</span>, Luis Lara, Varun Jampani, Eva Portelance, Christopher Pal, Siva Reddy</span></div>
 <div class="tree-line">│   │</div>
-<div class="tree-line">│   └── <strong>SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</strong> — <span class="tag">ICIPCW 2024</span> · <a href="https://arxiv.org/abs/2504.03089">paper</a></div>
+<div class="tree-line">│   └── <strong>SLACK: Attacking LiDAR-based SLAM with Adversarial Point Injections</strong> — <span class="tag"><a href="https://2024.ieeeicip.org/" target="_blank">ICIPCW 2024</a></span> · <a href="https://arxiv.org/abs/2504.03089">paper</a></div>
 <div class="tree-line">│       <span class="dim">Prashant Kumar, <span class="me">Dheeraj Vattikonda</span>, Kshitij Madhav Bhat, Kunal Dargan, Prem Kalra</span></div>
 <div class="tree-line">│</div>
 <div class="tree-line">├── <span class="dim">2023/</span></div>
-<div class="tree-line">│   └── <strong>Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</strong> — <span class="tag">BMVC 2023</span> · <a href="https://arxiv.org/abs/2309.09206">paper</a></div>
+<div class="tree-line">│   └── <strong>Differentiable SLAM Helps Deep Learning-based LiDAR Perception Tasks</strong> — <span class="tag"><a href="https://bmvc2023.org/" target="_blank">BMVC 2023</a></span> · <a href="https://arxiv.org/abs/2309.09206">paper</a></div>
 <div class="tree-line">│       <span class="dim">Prashant Kumar, <span class="me">Dheeraj Vattikonda</span>, Vedang Bhupesh Shenvi Nadkarni, Erqun Dong, Sabyasachi Sahoo</span></div>
 <div class="tree-line">│</div>
 <div class="tree-line">└── <span class="dim">2022/</span></div>
-<div class="tree-line">    └── <strong>Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR</strong> — <span class="tag">IROS 2022</span> · <a href="https://openreview.net/forum?id=tvPtqbjsKgX">paper</a></div>
+<div class="tree-line">    └── <strong>Grad-LiDAR-SLAM: Fully Differentiable Global SLAM for LiDAR</strong> — <span class="tag"><a href="https://iros2022.org/" target="_blank">IROS 2022</a></span> · <a href="https://openreview.net/forum?id=tvPtqbjsKgX">paper</a></div>
 <div class="tree-line">        <span class="dim"><span class="me">Dheeraj Vattikonda</span>, Aryan FNU, Erqun Dong, Sabyasachi Sahoo</span></div>
 </div>
       `
