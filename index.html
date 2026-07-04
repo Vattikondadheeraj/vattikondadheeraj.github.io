@@ -171,7 +171,8 @@
     border-left: 2px solid var(--border);
     padding: 0 0 0 12px;
     margin-top: 4px;
-    max-height: min(420px, calc(100dvh - 360px));
+    min-height: 120px;
+    max-height: min(72dvh, 540px);
     overflow-y: auto;
   }
   .output::-webkit-scrollbar { width: 4px; }
@@ -308,7 +309,8 @@
     .nav-btn svg { width: 11px; height: 11px; }
     .output {
       padding-left: 10px;
-      max-height: min(340px, calc(100dvh - 310px));
+      min-height: 100px;
+      max-height: min(64dvh, 360px);
     }
     .output h2 { font-size: 12px; margin-bottom: 6px; }
     .output p { font-size: 12px; line-height: 1.55; }
@@ -371,14 +373,12 @@
       icon: '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5v1H2v-1z"/></svg>',
       content: `
         <h2>## about</h2>
-        <p>I am a Research Assistant at
-        <a href="https://mila.quebec/en/" target="_blank"><span class="tag">Mila</span></a>
-        working on scaling post-training for LLM agents. My current work focuses on
-        multi-agent reasoning and self-improvement, exploring how agents can be trained to
-        collaborate, plan, and adapt across long-horizon tasks. I completed my M.Sc. at
-        <a href="https://www.mcgill.ca/" target="_blank"><span class="tag">McGill</span></a>
-        under <a href="https://www.cs.mcgill.ca/~xueliu/" target="_blank">Xue (Steve) Liu</a>,
-        where my research centred on reasoning in LLM web agents and tool-calling systems.</p>
+        <p>I am an incoming PhD student at
+        <a href="https://mila.quebec/en/" target="_blank"><span class="tag">Mila</span></a>,
+        advised by <a href="https://mila.quebec/en/directory/chris-pal" target="_blank">Christopher Pal</a>,
+        where I will work on post-training of long-horizon reasoning agents. My previous
+        research spans reasoning in LLM web agents and tool-calling systems, scaling
+        post-training, and multi-agent reasoning and self-improvement.</p>
 
         <p>Previously, I spent over a year as a Visiting Researcher at
         <a href="https://www.servicenow.com/research/" target="_blank"><span class="tag">ServiceNow AI Research</span></a>
@@ -388,7 +388,7 @@
         through statistical analysis
         (<a href="https://neurips.cc/Conferences/2025" target="_blank">NeurIPS 2025</a>,
         <a href="https://icml.cc/Conferences/2025" target="_blank">ICML CUA 2025 Oral</a>)
-        and Privileged Distillation and Self Distillation (OPSD) for language models
+        and Privileged Information Distillation / Self-Distillation (OPSD) for language models
         (<a href="https://icml.cc/Conferences/2026" target="_blank">ICML 2026</a>,
         <a href="https://iclr.cc/Conferences/2026" target="_blank">ICLR 2026 SPOT</a>).</p>
 
@@ -548,10 +548,9 @@
 
   function render(key) {
     const s = sections[key];
-    outputEl.innerHTML = '';
-    typeCommand(s.cmd, () => {
-      thinkAndShow(s.content, key);
-    });
+    cmdEl.textContent = s.cmd;
+    outputEl.innerHTML = s.content;
+    indexTreeLines();
     document.querySelectorAll('.nav-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.key === key);
     });
@@ -566,7 +565,7 @@
     navEl.appendChild(btn);
   });
 
-  // Boot animation — autoregressive character-by-character reveal
+  // Boot lines — rendered instantly (no typing animation)
   const bootTexts = [
     ' booting dvattk.io v1.0',
     ' loading profile: dheeraj vattikonda',
@@ -575,32 +574,12 @@
     ' ready in 0.42s'
   ];
   const bootEl = document.getElementById('boot');
+  bootEl.innerHTML = bootTexts
+    .map(t => `<div>[<span class="ok">  OK  </span>]${t}</div>`)
+    .join('');
 
-  function typeBootLine(text, onDone) {
-    const div = document.createElement('div');
-    const prefix = document.createElement('span');
-    prefix.innerHTML = '[<span class="ok">  OK  </span>]';
-    div.appendChild(prefix);
-    const tail = document.createElement('span');
-    div.appendChild(tail);
-    bootEl.appendChild(div);
-    let i = 0;
-    const tick = () => {
-      tail.textContent = text.slice(0, i);
-      if (i <= text.length) { i++; setTimeout(tick, 4); }
-      else { setTimeout(onDone, 15); }
-    };
-    tick();
-  }
-
-  function runBoot(idx) {
-    if (idx >= bootTexts.length) {
-      setTimeout(() => { render('about'); setTimeout(() => cmdInput.focus(), 400); }, 200);
-      return;
-    }
-    typeBootLine(bootTexts[idx], () => runBoot(idx + 1));
-  }
-  runBoot(0);
+  // Show About immediately at full size — no boot delay, no typing/thinking
+  render('about');
 
   // ===== HYBRID TYPING INPUT =====
   const cmdInput = document.getElementById('cmd-input');
